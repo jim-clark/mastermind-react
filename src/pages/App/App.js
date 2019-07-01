@@ -150,7 +150,7 @@ class App extends Component {
             />
           }/>
           <Route path='/settings' render={(props) => 
-            <SettingsPage />
+            <SettingsPage {...props} />
           }/>
         </Switch>
       </div>
