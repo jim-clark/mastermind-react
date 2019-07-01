@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import GamePage from '../../pages/GamePage/GamePage';
+import SettingsPage from '../../pages/SettingsPage/SettingsPage';
 
 const colors = ['#7CCCE5', '#FDE47F', '#E04644', '#B576AD'];
 
@@ -135,18 +136,23 @@ class App extends Component {
     return (
       <div className="App">
         <header className='App-header-footer'>R E A C T &nbsp;&nbsp;&nbsp;  M A S T E R M I N D</header>
-        <Route exact path='/' render={() => 
-          <GamePage
-            winTries={winTries}
-            colors={colors}
-            selColorIdx={this.state.selColorIdx}
-            guesses={this.state.guesses}
-            handleColorSelection={this.handleColorSelection}
-            handleNewGameClick={this.handleNewGameClick}
-            handlePegClick={this.handlePegClick}
-            handleScoreClick={this.handleScoreClick}
-          />
-        }/>
+        <Switch>
+          <Route exact path='/' render={() => 
+            <GamePage
+              winTries={winTries}
+              colors={colors}
+              selColorIdx={this.state.selColorIdx}
+              guesses={this.state.guesses}
+              handleColorSelection={this.handleColorSelection}
+              handleNewGameClick={this.handleNewGameClick}
+              handlePegClick={this.handlePegClick}
+              handleScoreClick={this.handleScoreClick}
+            />
+          }/>
+          <Route path='/settings' render={(props) => 
+            <SettingsPage />
+          }/>
+        </Switch>
       </div>
     );
   }
